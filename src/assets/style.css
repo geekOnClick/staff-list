@@ -83,7 +83,19 @@ background-color: white;
 .successBox {
   border: 1px solid green;
 }
-td.newBoss::before {
+/* td.newBoss::before {
 content: "+";
 padding-right: 10px;
+} */
+
+.newBoss::before {
+content: "+";
+padding-right: 10px;
+}
+
+.staffClass {
+  display: flex;
+  justify-content: flex-end;
+  width: 122px;
+  color: blueviolet;
 }

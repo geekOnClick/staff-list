@@ -121,7 +121,11 @@ export default {
       },
       myclass: ['myclass'],
       fields: [
-        { key: 'Имя', sortable: true },
+        { key: 'Имя',
+          sortable: true,
+          tdClass: (value, key, item) => {
+            return this.getClass(item)
+          } },
         { key: 'Телефон', sortable: true }
       ]
     }
@@ -143,14 +147,21 @@ export default {
         'Подчиненные': []
       }
       this.ADD_USER(newUser)
-      this.getBossName.forEach(el => {
-        this.$refs.items.$refs['item-rows'].forEach(element => {
-          if (element.$attrs['data-pk'] === el) {
-            element.$el.children[0].classList.add('newBoss')
-          }
-        })
-      })
+      // this.getBossName.forEach(el => {
+      //   this.$refs.items.$refs['item-rows'].forEach(element => {
+      //     if (element.$attrs['data-pk'] === el) {
+      //       element.$el.children[0].classList.add('newBoss')
+      //     }
+      //   })
+      // })
       localStorage.setItem('staff', JSON.stringify(this.getStaff))
+    },
+    getClass (item) {
+      if (item['Начальник']) {
+        return 'staffClass'
+      } else if (item['Подчиненные'].length !== 0) {
+        return 'newBoss'
+      }
     }
   },
   directives: {

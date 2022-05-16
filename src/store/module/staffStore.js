@@ -46,10 +46,12 @@ export default {
         state.canBeBoss.push(data['Имя'])
       } else {
         let ind = state.staff.findIndex(el => Object.values(el)[0] === Object.values(searchBoss)[0])
+        searchBoss['Подчиненные'].push(data)
         state.isBoss.push(searchBoss['Имя'])
         state.staff.splice(++ind, 0, data)
         state.canBeBoss.splice(ind, 0, data['Имя'])
       }
+      console.log(state.staff)
     }
   },
 
